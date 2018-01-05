@@ -3,22 +3,22 @@ function params=sc(doPlot);
  if ~exist('doPlot'); doPlot=0; else; doPlot=1; end
 
 % read in design
- design=textread('design.txt'); m=size(design,1);
+ design=textread('design_exp1'); m=size(design,1);
 % scale design
  xmin=min(design); xrange=max(design)-xmin;
  design=(design-repmat(xmin,m,1))./repmat(xrange,m,1);
 
 % read in sim data
- ysim=textread('sim_outputs'); ysim=ysim';
+ ysim=textread('sim_outputs_exp1'); ysim=ysim';
  
 % read in obs data
- obsdata=textread('obs_outputs'); 
+ obsdata=textread('obs_outputs_exp1'); 
  n=size(obsdata,1); % number of experiments
 % x in first nx columns, field data in last
  x=obsdata(:,1:end-1); nx=size(x,2);
  for ii=1:n, yobs(ii).y=obsdata(ii,end); end
-% specify assumed observation errors here
- for ii=1:n, yobs(ii).Sigy=0.075^2; end
+% specify assumed observation errors here (0.075)
+ for ii=1:n, yobs(ii).Sigy=0.0075^2; end
 % scale obs x
  for ii=1:nx, x(:,ii)=(x(:,ii)-xmin(ii))./xrange(ii); end
 

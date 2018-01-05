@@ -1,5 +1,5 @@
 % commands to run the tower example...
-addpath('C:\Users\test\Desktop\Research\GPMSA\matlab data')
+addpath(fullfile('code'))
 
 % read data
 dat=sc(1);
@@ -33,7 +33,7 @@ params=gpmmcmc(params,0,'stepInit',1,'nBurn',nburn,'nLev',nlev);
 params=stepsize(params,nburn,nlev);
 
 % mcmc
-nmcmc=10000;
+nmcmc=20000;
 pout=gpmmcmc(params,nmcmc,'step',1);
 save pout pout;
 
