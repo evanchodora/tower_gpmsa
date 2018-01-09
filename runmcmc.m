@@ -33,7 +33,7 @@ params=gpmmcmc(params,0,'stepInit',1,'nBurn',nburn,'nLev',nlev);
 params=stepsize(params,nburn,nlev);
 
 % mcmc
-nmcmc=20000;
+nmcmc=10000;
 pout=gpmmcmc(params,nmcmc,'step',1);
 save pout pout;
 
